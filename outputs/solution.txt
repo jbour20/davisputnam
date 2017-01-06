@@ -1,0 +1,1 @@
+START, A, D, E, G, F, GOAL
