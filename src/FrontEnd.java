@@ -229,7 +229,6 @@ public class FrontEnd {
     int indx = 1;
 
     indx = getTreasures(tokens, indx + 1);
-
     indx = getTolls(tokens, indx + 1);
 
     getNext(tokens, indx + 1);
@@ -617,7 +616,6 @@ public class FrontEnd {
     StringBuilder s = new StringBuilder();
 
     int len = String.valueOf(atomMap.size()).length();
-
     String format = "%" + len + "d %s\n";
 
     for (Map.Entry<String, Integer> entry : atomMap.entrySet()) {
@@ -637,7 +635,6 @@ public class FrontEnd {
     try {
 
       BufferedReader br = new BufferedReader(new StringReader(symbolicClauses));
-
       String line = br.readLine();
 
       while (line != null) {
@@ -676,11 +673,9 @@ public class FrontEnd {
     content += ("0\n" + mapToString());
 
     try {
-
       BufferedWriter bw = new BufferedWriter(new FileWriter(outFile.getFile()));
       bw.write(content);
       bw.close();
-
     } catch (IOException e) {
       // ignore...
     }

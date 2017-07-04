@@ -24,7 +24,6 @@ public class DavisPutnam {
   // Total number of atoms.
   private int numAtoms;
 
-  // DavisPutnam constructor.
   DavisPutnam() {
 
     numAtoms = Integer.MIN_VALUE;
@@ -58,12 +57,11 @@ public class DavisPutnam {
     try {
 
       BufferedReader br = new BufferedReader(new FileReader(inFile.getFile()));
-
       String line = br.readLine();
+
       while (!line.startsWith("0")) {
 
         List<Integer> clause = new ArrayList<Integer>();
-
         String[] literals = line.trim().split("\\s+");
 
         for (String literal : literals) {
@@ -77,7 +75,6 @@ public class DavisPutnam {
         }
 
         clauses.add(clause);
-
         line = br.readLine();
 
       }
@@ -101,8 +98,9 @@ public class DavisPutnam {
     try {
 
       BufferedReader br = new BufferedReader(new FileReader(inFile.getFile()));
-
       String line = br.readLine();
+
+      // skip lines read previously.
       while (!line.startsWith("0")) {
         line = br.readLine();
       }
@@ -128,38 +126,26 @@ public class DavisPutnam {
     int atom;
 
     while (true) {
-
       if (clauses.isEmpty()) {
-
         return valuations;
-
       } else if (checkFailure(clauses)) {
-
         return null;
-
       } else if ((atom = checkPureLiteral(clauses)) != 0) {
-
         valuations = obviousAssign(valuations, atom);
         deleteClauses(clauses, atom);
-
       } else if ((atom = checkSingleLiteral(clauses)) != 0) {
-
         valuations = obviousAssign(valuations, atom);
         clauses = propagate(clauses, atom);
-
       } else {
-
         break;
-
       }
-
     }
 
     atom = findFirstUnbound(valuations);
-
     valuations[atom] = true;
     List<List<Integer>> clausesNew = propagate(clauses, atom);
     Boolean[] vNew = dp1(clausesNew, valuations);
+
     if (vNew != null) {
       return vNew;
     }
@@ -254,7 +240,6 @@ public class DavisPutnam {
     while (iter.hasNext()) {
 
       List<Integer> clause = iter.next();
-
       boolean remove = false;
 
       for (Integer literal : clause) {
@@ -281,7 +266,6 @@ public class DavisPutnam {
     for (List<Integer> clause : clauses) {
 
       List<Integer> resultInner = new ArrayList<Integer>();
-
       boolean remove = false;
 
       for (Integer literal : clause) {
@@ -336,7 +320,6 @@ public class DavisPutnam {
     if (result != null) {
 
       int len = String.valueOf(result.length).length();
-
       String format = "%" + len + "d %s\n";
 
       for (int i = 1; i < result.length; i++) {
@@ -356,11 +339,9 @@ public class DavisPutnam {
   private void writeToFile(DefaultFiles outFile, String content) {
 
     try {
-
       BufferedWriter bw = new BufferedWriter(new FileWriter(outFile.getFile()));
       bw.write(content);
       bw.close();
-
     } catch (IOException e) {
       // ignore...
     }

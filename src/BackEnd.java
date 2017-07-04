@@ -27,7 +27,6 @@ public class BackEnd {
   // Key provided originally by the frontend.
   private final Map<Integer, String> atomMap;
 
-  // BackEnd constructor.
   BackEnd() {
 
     truths = new ArrayList<Integer>();
@@ -39,11 +38,9 @@ public class BackEnd {
   void go() {
 
     getTruths(DefaultFiles.DAVIS_PUTNAM_OUTPUT);
-
     mapAtoms(DefaultFiles.DAVIS_PUTNAM_OUTPUT);
 
     String result = interpretResults();
-
     writeToFile(DefaultFiles.SOLUTION, result);
 
   }
@@ -54,12 +51,10 @@ public class BackEnd {
     try {
 
       BufferedReader br = new BufferedReader(new FileReader(inFile.getFile()));
-
       String line = br.readLine();
+
       while (!line.startsWith("0")) {
-
         String[] tokens = line.trim().split("\\s+");
-
         if (tokens[1].equals("T")) {
           try {
             Integer val = Integer.parseInt(tokens[0]);
@@ -68,9 +63,7 @@ public class BackEnd {
             // assume input is well-formed...
           }
         }
-
         line = br.readLine();
-
       }
 
       br.close();
@@ -87,18 +80,17 @@ public class BackEnd {
     try {
 
       BufferedReader br = new BufferedReader(new FileReader(inFile.getFile()));
-
       String line = br.readLine();
+
       // skip lines read previously.
       while (!line.startsWith("0")) {
         line = br.readLine();
       }
 
       line = br.readLine();
+
       while (line != null) {
-
         String[] tokens = line.trim().split("\\s+");
-
         try {
           Integer val = Integer.parseInt(tokens[0]);
           atomMap.put(val, tokens[1]);
@@ -132,7 +124,7 @@ public class BackEnd {
       String atom = atomMap.get(truth);
 
       // We're only concerned with the position of the player
-      // at any given time, so only look at 'At' atoms.
+      // at any given time, so only look for 'At' atoms.
       if (atom.startsWith("At")) {
 
         int open = atom.indexOf("(");
@@ -169,15 +161,11 @@ public class BackEnd {
     boolean haveFirst = false;
 
     for (Map.Entry<Integer, String> entry : sorted.entrySet()) {
-
       if (haveFirst) {
         s.append(", ");
       }
-
       s.append(entry.getValue());
-
       haveFirst = true;
-
     }
 
     return s.toString();
@@ -188,11 +176,9 @@ public class BackEnd {
   private void writeToFile(DefaultFiles outFile, String content) {
 
     try {
-
       BufferedWriter bw = new BufferedWriter(new FileWriter(outFile.getFile()));
       bw.write(content);
       bw.close();
-
     } catch (IOException e) {
       // ignore...
     }

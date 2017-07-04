@@ -18,4 +18,4 @@ Input must be formatted as follows (see `inputs`):
 
 Sample board, corresponding to included input:  
 
-![alt-text](https://user-images.githubusercontent.com/14254261/27811027-541a58ca-6016-11e7-8338-8b944f1e8b71.png)
+<img src="https://user-images.githubusercontent.com/14254261/27811027-541a58ca-6016-11e7-8338-8b944f1e8b71.png" alt="alt text" width="355px">

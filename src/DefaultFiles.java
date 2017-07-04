@@ -17,11 +17,15 @@ public enum DefaultFiles {
   private final File file;
 
   DefaultFiles(File file) {
+
     this.file = file;
+
   }
 
   File getFile() {
+
     return file.getAbsoluteFile();
+
   }
 
 }
