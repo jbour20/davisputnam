@@ -1,6 +1,6 @@
 ### Davis-Putnam
 
-The goal of this project is to produce a solution to a simple form of adventure game using the Davis-Putnam algorithm. To compile:  
+The goal of this project is to produce a solution to a simple form of adventure game using the [Davis-Putnam algorithm](https://en.wikipedia.org/wiki/Davis%E2%80%93Putnam_algorithm). To compile:  
 
 `javac -d bin src/*.java`
 

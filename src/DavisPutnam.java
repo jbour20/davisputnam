@@ -126,6 +126,7 @@ public class DavisPutnam {
     int atom;
 
     while (true) {
+
       if (clauses.isEmpty()) {
         return valuations;
       } else if (checkFailure(clauses)) {
@@ -139,6 +140,7 @@ public class DavisPutnam {
       } else {
         break;
       }
+
     }
 
     atom = findFirstUnbound(valuations);
